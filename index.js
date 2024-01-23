@@ -3,10 +3,7 @@ const ytdl = require('ytdl-core');
 const ffmpeg = require('fluent-ffmpeg');
 const app = express();
 const port = process.env.PORT || 3000
-CYCLIC_URL=https://zany-red-clam-cuff.cyclic.app
-CYCLIC_DB=zany-red-clam-cuffCyclicDB
-CYCLIC_BUCKET_NAME=cyclic-zany-red-clam-cuff-eu-west-1
-CYCLIC_APP_ID=zany-red-clam-cuff
+
 
 
 // Endpoint to get video details
