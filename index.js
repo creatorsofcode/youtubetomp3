@@ -3,7 +3,8 @@ const ytdl = require('ytdl-core');
 const ffmpeg = require('fluent-ffmpeg');
 const app = express();
 const port = 3000;
-
+const AWS = require("aws-sdk");
+const s3 = new AWS.S3()
 app.use(express.static('public'));
 
 // Endpoint to get video details
