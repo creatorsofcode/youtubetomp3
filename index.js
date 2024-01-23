@@ -2,7 +2,7 @@ const express = require('express');
 const ytdl = require('ytdl-core');
 const ffmpeg = require('fluent-ffmpeg');
 const app = express();
-
+const port = process.env.PORT || 3000
 CYCLIC_URL=https://zany-red-clam-cuff.cyclic.app
 CYCLIC_DB=zany-red-clam-cuffCyclicDB
 CYCLIC_BUCKET_NAME=cyclic-zany-red-clam-cuff-eu-west-1
@@ -53,6 +53,6 @@ app.get('/download', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`https://zany-red-clam-cuff.cyclic.app${port}`);
+    console.log(`https://nodeyoutubemp3.cyclic.app/${port}`);
 });
 
