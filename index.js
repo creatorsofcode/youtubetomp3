@@ -4,7 +4,7 @@ const ffmpeg = require('fluent-ffmpeg');
 const app = express();
 const port = process.env.PORT || 3000
 
-
+app.use(express.static('public'));
 
 // Endpoint to get video details
 app.get('/videoDetails', async (req, res) => {
@@ -50,6 +50,5 @@ app.get('/download', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`http//localhost:${port}`);
+    console.log(`Server running at http://localhost:${port}`);
 });
-
