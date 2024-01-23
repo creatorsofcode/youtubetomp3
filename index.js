@@ -3,7 +3,9 @@ const ytdl = require('ytdl-core');
 const ffmpeg = require('fluent-ffmpeg');
 const app = express();
 const port = 3000;
+
 app.use(express.static('public'));
+
 // Endpoint to get video details
 app.get('/videoDetails', async (req, res) => {
     const videoUrl = req.query.URL;
@@ -24,7 +26,7 @@ app.get('/videoDetails', async (req, res) => {
     }
 });
 
-app.get('download', async (req, res) => {
+app.get('/download', async (req, res) => {
     const videoUrl = req.query.URL;
     if (!ytdl.validateURL(videoUrl)) {
         return res.status(400).send('Invalid YouTube URL');
@@ -33,8 +35,8 @@ app.get('download', async (req, res) => {
     try {
         const info = await ytdl.getInfo(videoUrl);
         const title = info.videoDetails.title.replace(/[^\w\s]/gi, '');
-    res.header('Content-Disposition', `"attachment: filename="${title}.mp3"`);
-     
+        res.header('Content-Disposition', `attachment; filename="${title}.mp3"`);
+
         const stream = ytdl(videoUrl, { quality: 'highestaudio' });
         ffmpeg(stream)
             .audioBitrate(128)
