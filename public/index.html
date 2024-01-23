@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YouTube to MP3 Downloader</title>
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+</head>
+<body>
+<center>
+<form class="pure-form" onsubmit="return false">
+    <h1>YouTube to MP3 Downloader</h1>
+    <input type="text"  class="pure-input-rounded" id="youtubeUrl">
+    <button class="button-xlarge pure-button" onclick="fetchVideoDetails()">Convert</button>
+</form>
+    <div id="videoDetails" style="display: none;">
+        <h2 id="title"></h2>
+        <img id="thumbnail" width="220" src="" alt="Video Thumbnail"><br>
+        <a class="pure-button"  id="downloadLink" href="#">Download MP3</a>
+    </div>
+
+    <script>
+        function fetchVideoDetails() {
+            const url = document.getElementById('youtubeUrl').value;
+            fetch(`/videoDetails?URL=${encodeURIComponent(url)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.title) {
+                        alert('Error fetching video details');
+                        return;
+                    }
+                    document.getElementById('title').textContent = data.title;
+                    document.getElementById('thumbnail').src = data.thumbnail;
+                    document.getElementById('downloadLink').href = data.downloadLink;
+                    document.getElementById('videoDetails').style.display = 'block';
+                });
+        }
+        
+    </script>
+    </center>
+</body>
+</html>
+
