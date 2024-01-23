@@ -50,6 +50,6 @@ app.get('/download', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+    console.log(`https://zany-red-clam-cuff.cyclic.app/${port}`);
 });
 
