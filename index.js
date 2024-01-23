@@ -50,6 +50,6 @@ app.get('/download', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`https://nodeyoutubemp3.cyclic.app/${port}`);
+    console.log(`https://nodeyoutubemp3.cyclic.app:${port}`);
 });
 
